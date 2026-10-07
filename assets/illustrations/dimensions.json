@@ -1,0 +1,34 @@
+{
+  "kormoo": {
+    "width": 1600,
+    "height": 900
+  },
+  "sujog": {
+    "width": 1600,
+    "height": 900
+  },
+  "genz": {
+    "width": 1600,
+    "height": 900
+  },
+  "pathshala": {
+    "width": 1600,
+    "height": 900
+  },
+  "zephra": {
+    "width": 1600,
+    "height": 900
+  },
+  "xai": {
+    "width": 1600,
+    "height": 900
+  },
+  "voiceart": {
+    "width": 1600,
+    "height": 900
+  },
+  "strawberry": {
+    "width": 1600,
+    "height": 900
+  }
+}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="512" height="512" viewBox="0 0 512 512"
+     role="img" aria-labelledby="title desc">
+  <title id="title">Kormoo logo mark</title>
+  <desc id="desc">Kormoo angular K logo in charcoal black and orange.</desc>
+
+  <!-- Current Kormoo primary mark. Transparent background. -->
+  <path fill="#181818" d="
+    M 243 97
+    L 403 97
+    L 280 210
+    L 198 282
+    Q 191 288 191 298
+    L 191 432
+    L 111 432
+    L 111 220
+    Z
+  "/>
+
+  <path fill="#FD5E00" d="
+    M 247 256
+    Q 252 256 257 262
+    L 407 432
+    L 298 432
+    L 204 332
+    Q 201 328 201 321
+    L 201 294
+    Q 201 287 207 282
+    L 239 260
+    Q 243 256 247 256
+    Z
+  "/>
+</svg>

@@ -1,24 +1,23 @@
-# Nasir Khan's Portfolio
+# Nasir Khan ? Portfolio
 
-## Overview
-Welcome to my portfolio! This website showcases my skills, interests, and projects in technology and innovation. Here, you can learn more about me and explore my work.
+Product engineering, full-stack systems and AI agents, with eight original watercolor project covers.
 
-## Features
-- **Contact Information**: Reach out to me through various platforms.
-- **Interests**: Discover my passion for technology, including AI and web development.
-- **Projects**: Explore a variety of projects, including ongoing and completed works.
-- **Resources**: Access valuable articles and resources that I find interesting.
+Public website: https://imnasir-x.github.io/portfolio/
 
-## How to View
-To view the portfolio, open the `index.html` file in your web browser. This is a static site, so no server is required. For the best experience, use modern browsers like Chrome, Firefox, or Edge.
+## Local preview
 
-## Contact
-- **X**: [@Imnasir_](https://x.com/Imnasir_) 🐦
-- **GitHub**: [Imnasir-X GitHub Profile](https://github.com/Imnasir-X) 📂
-- **Email**: [nasirkhan496088@example.com](mailto:nasirkhan496088@example.com) 📧
+Run `python -m http.server 4268 --bind 127.0.0.1` from this repository, then open http://127.0.0.1:4268.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
+This site uses static HTML, CSS and JavaScript. No installation or build step is required. The homepage and project detail views use responsive watercolor illustrations; actual product interfaces are retained in the detail views. The Zephra Context Inspector uses the original deterministic matching functions.
 
-## Acknowledgments
-Special thanks to [insert any resources or individuals here].
+## Hosting
+
+GitHub Pages serves the root of the `main` branch. The existing `portfolio.html` address redirects to the current homepage.
+
+For Vercel, import this repository with Framework Other, Root Directory at the repository root and no build command. `vercel.json` serves the static root directly. No secrets or environment variables are needed. Use the confirmed public production URL for canonical and Open Graph URLs after deployment.
+
+## Truth and privacy
+
+Kormoo and Sujog.ai are in development. The Age of GenZ was built and operated. Pathshala and Zephra have public code. The xAI project is an independent interface study with no affiliation. Illustrations are editorial representations, not screenshots or customer photographs. Private project sources, credentials and production records are excluded.
+
+The selected r?sum? is served unchanged. Image-generation prompts are documented in `illustration-prompts.json`; responsive exports are in `assets/illustrations/`.
