@@ -1,6 +1,6 @@
 # Nasir Khan ? Portfolio
 
-Product engineering, full-stack systems and AI agents, with eight original watercolor project covers.
+Product engineering, full-stack systems and AI agents, with eight working project previews.
 
 Public portfolio: https://nasir-khan-portfolio-cyan.vercel.app/
 
@@ -10,7 +10,20 @@ GitHub Pages mirror: https://imnasir-x.github.io/portfolio/
 
 Run `python -m http.server 4268 --bind 127.0.0.1` from this repository, then open http://127.0.0.1:4268.
 
-This site uses static HTML, CSS and JavaScript. No installation or build step is required. The homepage and project detail views use responsive watercolor illustrations; actual product interfaces are retained in the detail views. The Zephra Context Inspector uses the original deterministic matching functions.
+This site uses static HTML, CSS and JavaScript. No installation or build step is required. `live-previews.js` and `live-previews.css` implement the homepage and Explore artifacts. Actual product interfaces remain in the detail views, and the original watercolor images remain available as fallbacks and editorial material.
+
+## Live artifacts
+
+- Kormoo: SVG factory flow, simulated orders, packing counter and attendance.
+- Sujog: scripted agent state machine, human approval, audit history and kill switch. No model or external action.
+- The Age of GenZ: scroll-responsive publication stages with explicit stage controls. Sample spread, not a live publication claim.
+- Pathshala: role switcher and simulated API outcomes, separate from the real backend implementation linked in the case study.
+- Zephra: the original deterministic classifier, editable URL context and decision trace. Unknown context restores the baseline. Automatic examples stop when the visitor interacts.
+- xAI study: an original WebGL data field and selectable relationships, with no company affiliation.
+- VoiceArt: a WebGL orb with local Web Audio analysis, generated tone sample and opt-in microphone. Audio is never recorded or uploaded. Stop, offscreen, hidden-tab and dialog cleanup release microphone tracks.
+- Strawberry Shooter: a keyboard and pointer playable Canvas 2D adaptation of the original Python/Pygame experiment.
+
+Animation pauses offscreen and respects reduced motion. Explicit controls remain available without continuous animation. WebGL is limited to the data field and orb; contexts are released offscreen and while the homepage is covered by a project dialog. Canvas pixel ratio is capped at 2. No animation libraries, AI calls or runtime dependencies are added.
 
 ## Hosting
 

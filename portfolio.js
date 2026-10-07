@@ -387,7 +387,7 @@ const projects={
         "text": "Creative coding gives me a way to follow an interesting technical question and explore a new interaction."
       }
     ],
-    "evidence": "Creative coding experiment. This portfolio does not request microphone access.",
+    "evidence": "Original Python creative-coding experiment. The portfolio adds a WebGL / Web Audio browser adaptation with an opt-in microphone and local analysis; no audio is uploaded.",
     "sourceUrl": "https://github.com/Imnasir-X/VoiceArt",
     "lead": "An exploration of sound as a visual input: changing audio becomes changing bubbles and movement.",
     "status": "Creative coding experiment"
@@ -403,7 +403,7 @@ projects.strawberry={
  sourceUrl:'https://github.com/Imnasir-X/strawberry-shooter-game',
  sections:[{label:'The experiment',text:'A simple shooter built around strawberries, a background image and sound effects.'},
  {label:'The code',text:'The public repository contains the Python game and its image and sound assets.'}],
- evidence:'Game experiment. The cover is an illustration, rather than a captured gameplay screen.'
+ evidence:'Original Python / Pygame game. The playable Canvas 2D preview is a new portfolio browser adaptation, rather than a capture of the original game.'
 };
 const coverDescriptions={"kormoo": "Watercolor illustration of a garment workshop with sewing tables, fabrics and production records", "sujog": "Watercolor illustration of a person reviewing candidate documents and a proposed next step", "genz": "Watercolor illustration of a publishing workspace with article spreads, photographs and editorial notes", "pathshala": "Watercolor illustration of assignment work and teacher feedback at a shared learning desk", "zephra": "Watercolor illustration of a page shown in different approved paper variations", "xai": "Watercolor illustration of a research workspace with reports and information displays", "voiceart": "Watercolor illustration of a microphone, headphones and flowing painted sound shapes", "strawberry": "Playful watercolor illustration of strawberries and arcade targets"};
 for(const [key,d] of Object.entries(projects)){
@@ -418,36 +418,23 @@ function figure(src,alt,width,height,caption){const f=create('figure','dialog-fi
 function renderProject(key){
  const d=projects[key];if(!d)return;openedKey=key;
  const body=create('article','dialog-body');body.append(create('span','eyebrow',d.kind));const title=create('h2','',d.name);title.id='dialog-title';body.append(title,create('p','dialog-lead',d.lead),create('p','dialog-intro',d.intro));
- const cover=figure(d.cover,d.coverAlt,1600,900,'Editorial illustration');cover.classList.add('dialog-cover');cover.querySelector('.full-image').remove();const coverImg=cover.querySelector('img');coverImg.srcset=`assets/illustrations/${key}-640.webp 640w, assets/illustrations/${key}-960.webp 960w, assets/illustrations/${key}-1600.webp 1600w`;coverImg.sizes='(max-width:700px) calc(100vw - 40px), 1220px';coverImg.decoding='async';body.append(cover);
+ const cover=create('div','dialog-cover project-cover');cover.dataset.demo=key;const fallback=create('img');fallback.src=d.cover;fallback.alt=d.coverAlt;fallback.width=1600;fallback.height=900;cover.append(fallback);body.append(cover);
  const reading=create('div','detail-content'),aside=create('aside');
  for(const [label,value] of [['Role',d.role],['Current state',d.status],['Tech',d.stack]]){if(!value)continue;const fact=create('div');fact.append(create('h3','',label));if(Array.isArray(value)){const list=create('ul');value.forEach(v=>list.append(create('li','',v)));fact.append(list);}else fact.append(create('p','',value));aside.append(fact);}reading.append(aside);
  d.sections.forEach(section=>{const el=create('section','story-section');el.append(create('h3','',section.label));if(section.text)el.append(create('p','',section.text));if(section.items){const ul=create('ul');section.items.forEach(item=>ul.append(create('li','',item)));el.append(ul);}if(section.loop){const ol=create('ol','agent-loop');section.loop.forEach(step=>ol.append(create('li','',step)));el.append(ol);}reading.append(el);});body.append(reading);
  if(d.diagram){const template=document.getElementById('diagram-'+d.diagram);if(template){const diagram=create('section','detail-diagram');diagram.append(create('h3','', 'The system'),template.content.cloneNode(true));body.append(diagram);}}
  if(d.image||d.extraImages){const screens=create('section','project-evidence');screens.append(create('h3','', 'Interface evidence'));if(d.image)screens.append(figure(d.image,d.imageAlt,d.imageWidth,d.imageHeight,d.imageCaption));if(d.extraImages)d.extraImages.forEach(img=>screens.append(figure(img.image,img.alt,img.width,img.height,img.caption)));body.append(screens);}
  const evidence=create('section','story-evidence');evidence.append(create('p','',d.evidence));const link=create('a','',d.sourceUrl?'View source ↗':d.visitUrl?d.visitLabel:'Discuss this project ↗');link.href=d.sourceUrl||d.visitUrl||'#contact';if(d.sourceUrl||d.visitUrl){link.target='_blank';link.rel='noopener noreferrer';}else link.addEventListener('click',e=>{e.preventDefault();closeProject();setTimeout(()=>$('#contact').scrollIntoView(),50);});evidence.append(link);body.append(evidence);
- content.replaceChildren(body);if(!dialog.open)dialog.showModal();dialog.scrollTop=0;document.body.classList.add('modal-open');document.title=d.name+' — Nasir Khan';$('.dialog-close').focus();
+ window.ProjectDemos?.destroyWithin(content);content.replaceChildren(body);window.ProjectDemos?.mount(cover,key);if(!dialog.open)dialog.showModal();dialog.scrollTop=0;document.body.classList.add('modal-open');document.title=d.name+' — Nasir Khan';$('.dialog-close').focus();
 }
 function openProject(key,el){if(!projects[key])return;opener=el||null;const url=new URL(location.href);url.searchParams.set('project',key);history.pushState({portfolioProject:true},'',url);transition(()=>renderProject(key));}
-function dismiss(){dialog.close();document.body.classList.remove('modal-open');openedKey=null;document.title=homepageTitle;if(opener?.isConnected)opener.focus({preventScroll:true});}
+function dismiss(){window.ProjectDemos?.destroyWithin(content);dialog.close();document.body.classList.remove('modal-open');openedKey=null;document.title=homepageTitle;if(opener?.isConnected)opener.focus({preventScroll:true});}
 function closeProject(){if(!dialog.open)return;if(history.state?.portfolioProject){history.back();}else{const url=new URL(location.href);url.searchParams.delete('project');history.replaceState(null,'',url);transition(dismiss);}}
 $$('[data-project]').forEach(a=>a.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();openProject(a.dataset.project,a);}));
 $('.dialog-close').addEventListener('click',closeProject);dialog.addEventListener('cancel',e=>{e.preventDefault();closeProject();});$('[data-close-home]').addEventListener('click',e=>{e.preventDefault();closeProject();setTimeout(()=>$('#home').scrollIntoView(),50);});
 addEventListener('popstate',()=>{const key=new URL(location.href).searchParams.get('project');if(projects[key])transition(()=>renderProject(key));else if(dialog.open)transition(dismiss);});
 const initialKey=new URL(location.href).searchParams.get('project');if(projects[initialKey])renderProject(initialKey);
-function runInspector(){
- const input=$('#query').value.trim().replace(/^\?/,''),core=window.ZephraCore;
- const {context}=core.parseContext(`?${input}`),decision=core.detectVariant(context),name=decision.variant;
- $('#decision-status').textContent=name?`${name.toUpperCase()} MATCHED`:'ORIGINAL PRESERVED';
- $('#trace-context').textContent=decision.param?`${decision.param} = ${context[decision.param]}`:Object.keys(context).length?'Context received · no approved intent found':'No tracked context';
- $('#trace-match').textContent=name?`${decision.how==='phrase'?'Exact phrase match':'Allow-listed word match'} · ${name}`:'No match · fail open';
- $('#trace-response').textContent=name?'Approved copy · five permitted targets':'Restore the original page unchanged';
- $('#result-headline').textContent=name?core.VARIANTS[name].headline:'The original page stays intact.';
- $('#result-benefit').textContent=name?core.VARIANTS[name].benefit:'No approved match. The original copy is preserved.';
- $('.result-preview>span').textContent=name?'Approved headline':'Safe fallback';
- $$('[data-query]').forEach(b=>b.classList.toggle('active',b.dataset.query===input));
-}
-$('#context-form').addEventListener('submit',e=>{e.preventDefault();runInspector();});$$('[data-query]').forEach(b=>b.addEventListener('click',()=>{$('#query').value=b.dataset.query;runInspector();}));if(window.ZephraCore)runInspector();
-if('IntersectionObserver'in window&&!motion.matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');observer.unobserve(entry.target);}}),{threshold:.08});$$('.reveal').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre-reveal');observer.observe(el);}});motion.addEventListener('change',e=>{if(e.matches){$$('.pre-reveal').forEach(el=>el.classList.remove('pre-reveal'));observer.disconnect();}});}
+if('IntersectionObserver'in window&&!motion.matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');observer.unobserve(entry.target);}}),{threshold:.08});const pending=$$('.reveal').filter(el=>el.getBoundingClientRect().top>innerHeight);pending.forEach(el=>{el.classList.add('pre-reveal');observer.observe(el);});motion.addEventListener('change',e=>{if(e.matches){$$('.pre-reveal').forEach(el=>el.classList.remove('pre-reveal'));observer.disconnect();}});}
 const nav=$$('nav a[href^="#"]'),sections=['work','about','contact'].map(id=>document.getElementById(id));let ticking=false;
 function updateNav(){let active='';sections.forEach(s=>{if(s.getBoundingClientRect().top<$('.site-header').offsetHeight+150)active=s.id;});nav.forEach(a=>{if(a.hash==='#'+active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});ticking=false;}
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(updateNav);}},{passive:true});updateNav();
