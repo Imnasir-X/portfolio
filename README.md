@@ -17,8 +17,8 @@ This site uses static HTML, CSS and JavaScript. No installation or build step is
 - Kormoo: SVG factory flow, simulated orders, packing counter and attendance.
 - Sujog: scripted agent state machine, human approval, audit history and kill switch. No model or external action.
 - The Age of GenZ: scroll-responsive publication stages with explicit stage controls. Sample spread, not a live publication claim.
-- Pathshala: role switcher and simulated API outcomes, separate from the real backend implementation linked in the case study.
-- Zephra: the original deterministic classifier, editable URL context and decision trace. Unknown context restores the baseline. Automatic examples stop when the visitor interacts.
+- Pathshala: role-dependent assignment, teacher-review and class-roster illustrations, plus a role switcher and simulated API outcomes, separate from the real backend implementation linked in the case study.
+- Zephra: the original deterministic classifier, editable URL context, illustrated landing-page variations and an expandable decision trace. Unknown context restores the baseline. Automatic examples stop when the visitor interacts.
 - xAI study: an original WebGL data field and selectable relationships, with no company affiliation.
 - VoiceArt: a WebGL orb with local Web Audio analysis, generated tone sample and opt-in microphone. Audio is never recorded or uploaded. Stop, offscreen, hidden-tab and dialog cleanup release microphone tracks.
 - Strawberry Shooter: a keyboard and pointer playable Canvas 2D adaptation of the original Python/Pygame experiment.
