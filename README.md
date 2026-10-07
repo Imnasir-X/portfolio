@@ -2,7 +2,9 @@
 
 Product engineering, full-stack systems and AI agents, with eight original watercolor project covers.
 
-Public website: https://imnasir-x.github.io/portfolio/
+Public portfolio: https://nasir-khan-portfolio-cyan.vercel.app/
+
+GitHub Pages mirror: https://imnasir-x.github.io/portfolio/
 
 ## Local preview
 

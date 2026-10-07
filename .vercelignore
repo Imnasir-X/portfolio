@@ -1,0 +1,7 @@
+.git/
+.vercel/
+.env*
+node_modules/
+qa/
+README.md
+illustration-prompts.json
