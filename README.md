@@ -12,6 +12,8 @@ Run `python -m http.server 4268 --bind 127.0.0.1` from this repository, then ope
 
 This site uses static HTML, CSS and JavaScript. No installation or build step is required. `live-previews.js` and `live-previews.css` implement the homepage and Explore artifacts. Actual product interfaces remain in the detail views, and the original watercolor images remain available as fallbacks and editorial material.
 
+Explore views put the contribution and current state first, followed by actual interface evidence, an explicitly labeled portfolio demo, and deeper system details. `polish.css` supplies the final responsive spacing, input sizing and shared motion timing. Sujog keeps approval and kill controls together with an expandable audit log; Pathshala places simulated responses beside the action and keeps permission details expandable.
+
 ## Live artifacts
 
 - Kormoo: SVG factory flow, simulated orders, packing counter and attendance.
