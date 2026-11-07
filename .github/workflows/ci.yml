@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Lint and test (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - name: Lint JavaScript and HTML
+        run: npm run lint
+      - name: Check local links and GitHub Pages layout
+        run: npm run check:links
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Smoke test the site under /portfolio/
+        run: npm run test:smoke

@@ -412,11 +412,11 @@ for(const [key,d] of Object.entries(projects)){
 }
 
 const dialog=$('#project-dialog'),content=$('#dialog-content'),homepageTitle=document.title;
-let opener=null,openedKey=null;
+let opener=null;
 const create=(tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;};
 function figure(src,alt,width,height,caption){const f=create('figure','dialog-figure'),img=create('img','dialog-image');if(height/width>1.3)f.dataset.format='portrait';img.src=src;img.alt=alt;img.width=width||1600;img.height=height||900;img.decoding='async';img.loading='lazy';const frame=create('div','evidence-frame');frame.append(img);f.append(frame);if(caption)f.append(create('figcaption','',caption));const full=create('a','full-image','Open full-size image \u2197');full.href=src;full.target='_blank';full.rel='noopener';f.append(full);return f;}
 function renderProject(key){
- const d=projects[key];if(!d)return;openedKey=key;
+ const d=projects[key];if(!d)return;
  const body=create('article','dialog-body');body.dataset.project=key;body.append(create('span','eyebrow',d.kind));const title=create('h2','',d.name);title.id='dialog-title';body.append(title,create('p','dialog-lead',d.lead),create('p','dialog-intro',d.intro));
  const summary=create('section','project-summary');summary.setAttribute('aria-label','Project at a glance');if(d.outcome){const built=create('div');built.append(create('h3','','What I built'),create('p','',d.outcome));summary.append(built);}const state=create('div');state.append(create('h3','','Current state'),create('p','',d.status));if(d.role)state.append(create('p','summary-role',d.role));summary.append(state);body.append(summary);
  if(d.image){const proof=create('section','project-evidence primary-evidence');proof.append(create('h3','','Actual interface'),figure(d.image,d.imageAlt,d.imageWidth,d.imageHeight,d.imageCaption));proof.querySelector('img').loading='eager';body.append(proof);}
@@ -430,7 +430,7 @@ function renderProject(key){
  window.ProjectDemos?.destroyWithin(content);content.replaceChildren(body);window.ProjectDemos?.mount(cover,key);if(!dialog.open)dialog.showModal();dialog.scrollTop=0;document.body.classList.add('modal-open');document.title=d.name+' — Nasir Khan';$('.dialog-close').focus();
 }
 function openProject(key,el){if(!projects[key])return;opener=el||null;const url=new URL(location.href);url.searchParams.set('project',key);history.pushState({portfolioProject:true},'',url);transition(()=>renderProject(key));}
-function dismiss(){window.ProjectDemos?.destroyWithin(content);dialog.close();document.body.classList.remove('modal-open');openedKey=null;document.title=homepageTitle;if(opener?.isConnected)opener.focus({preventScroll:true});}
+function dismiss(){window.ProjectDemos?.destroyWithin(content);dialog.close();document.body.classList.remove('modal-open');document.title=homepageTitle;if(opener?.isConnected)opener.focus({preventScroll:true});}
 function closeProject(){if(!dialog.open)return;if(history.state?.portfolioProject){history.back();}else{const url=new URL(location.href);url.searchParams.delete('project');history.replaceState(null,'',url);transition(dismiss);}}
 $$('[data-project]').forEach(a=>a.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();openProject(a.dataset.project,a);}));
 $('.dialog-close').addEventListener('click',closeProject);dialog.addEventListener('cancel',e=>{e.preventDefault();closeProject();});$('[data-close-home]').addEventListener('click',e=>{e.preventDefault();closeProject();setTimeout(()=>$('#home').scrollIntoView(),50);});

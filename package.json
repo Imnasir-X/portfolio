@@ -1,0 +1,30 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio of Nasir Khan: static HTML, CSS and JavaScript served by GitHub Pages and Vercel",
+  "license": "MIT",
+  "author": "Nasir Khan",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Imnasir-X/portfolio.git"
+  },
+  "homepage": "https://imnasir-x.github.io/portfolio/",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "python3 -m http.server 4268 --bind 127.0.0.1",
+    "lint": "eslint . && html-validate index.html portfolio.html",
+    "check:links": "node scripts/check-links.js",
+    "test:smoke": "node scripts/smoke-test.js",
+    "test": "npm run check:links && npm run test:smoke"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "globals": "^17.14.0",
+    "html-validate": "^11.19.0",
+    "playwright": "^1.65.0"
+  }
+}
