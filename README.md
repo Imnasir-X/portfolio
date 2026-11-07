@@ -43,7 +43,7 @@ Portfolio of Nasir Khan, product engineer: full-stack products, AI agent systems
 - SVG, Canvas 2D, WebGL and Web Audio for the previews
 - Self-hosted Manrope and Newsreader fonts (SIL Open Font License, see `assets/OFL-*.txt`)
 - Hosting: GitHub Pages (root of `main`) and Vercel (static, no build)
-- Tooling: ESLint 9, html-validate, a local-link checker and a Playwright smoke test, run by GitHub Actions on Node 20 and 22
+- Tooling: ESLint 9, html-validate, a local-link checker and a Playwright smoke test, run by GitHub Actions on Node 22 and 24
 
 ## Quick start
 

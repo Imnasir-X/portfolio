@@ -11,7 +11,7 @@
   },
   "homepage": "https://imnasir-x.github.io/portfolio/",
   "engines": {
-    "node": ">=20"
+    "node": ">=22.22"
   },
   "scripts": {
     "start": "python3 -m http.server 4268 --bind 127.0.0.1",
