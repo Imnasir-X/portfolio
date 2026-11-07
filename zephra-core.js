@@ -1,7 +1,5 @@
 /* Pure matching logic from Imnasir-X/zephra-dynamic-landing. Adapted only to expose the core; no DOM writer. */
 (() => {
-  var VERSION = '1.0.0';
-
   /* =========================================================================
    * 1. CONFIG — the single edit surface for matching behaviour
    * ========================================================================= */
@@ -124,7 +122,7 @@
     var params;
     try {
       params = new URLSearchParams(search || '');
-    } catch (e) {
+    } catch {
       return { raw: raw, context: context, warnings: ['query unparseable — fail open'] };
     }
     CONFIG.trackedParams.forEach(function (p) {

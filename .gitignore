@@ -1,5 +1,18 @@
+# Deploy tooling
 .vercel/
-node_modules/
-qa/
-.vercel
 .env*
+
+# Dependencies (dev tooling only; the site has no runtime dependencies)
+node_modules/
+
+# Local QA output
+qa/
+test-results/
+playwright-report/
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
